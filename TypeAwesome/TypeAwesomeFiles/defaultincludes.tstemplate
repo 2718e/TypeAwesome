@@ -1,0 +1,20 @@
+﻿export interface IMethodInfo<TParam, TReturn> {
+    url: string;
+}
+
+export function CallMethod<TParam, TReturn>(methodInfo: IMethodInfo<TParam, TReturn>, parameter: TParam, onSuccess : (TReturn) => void, onError : (xhr: JQueryXHR) => void) {
+    $.ajax({
+		type: 'POST',
+		contentType: "application/json; charset=utf-8",
+        dataType: 'json',
+        url: methodInfo.url,
+        data: JSON.stringify(parameter)
+    }).then(onSuccess,onError);
+}
+
+export function CallParameterlessMethod<TReturn>(methodInfo: IMethodInfo<void, TReturn>, onSuccess: (TReturn) => void, onError: (xhr: JQueryXHR) => void) {
+    $.ajax({
+        url: methodInfo.url
+    }).then(onSuccess, onError);
+}
+

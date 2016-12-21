@@ -1,0 +1,4 @@
+﻿var CONTROLLERACTIONMethodInfo: IMethodInfo<PARAMETERTYPE, RETURNTYPE> = {
+    url: "/CONTROLLER/ACTION"
+}
+

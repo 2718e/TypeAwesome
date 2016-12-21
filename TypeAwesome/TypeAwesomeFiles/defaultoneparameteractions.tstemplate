@@ -1,0 +1,4 @@
+﻿export function CONTROLLERACTION(PARAMETERNAME: PARAMETERTYPE, onSuccess: (model: RETURNTYPE) => void, onError: (xhr: JQueryXHR) => void) {
+    CallMethod(CONTROLLERACTIONMethodInfo, PARAMETERNAME, onSuccess, onError);
+}
+
