@@ -24,3 +24,4 @@ export function CallParameterlessMethod<TReturn>(methodInfo: IMethodInfo<void, T
     });
     return result
 }
+

@@ -47,9 +47,9 @@ namespace TypeAwesome
             AddReference($"{relativepathFromOutputDirToWebProjectRoot}/typings/index.d.ts");
         }
 
-        public void IncludeAssembly(Assembly inServerAssembly) {
+        public void IncludeAssembly(Assembly serverAssembly) {
             var resultBuilder = new StringBuilder();
-            var types = inServerAssembly.ExportedTypes.ToList();
+            var types = serverAssembly.ExportedTypes.ToList();
             var myModelClasses = types.Where(typeInfo => typeof(ITypedJModel).IsAssignableFrom(typeInfo)).ToList();
             if (myModelClasses.Any(inClass=> inClass.IsGenericType))
             {
@@ -61,9 +61,9 @@ namespace TypeAwesome
             this.actionMethods.AddRange(myMethodsToExport);
         }
 
-        public void OpenNamespace(string inNamespaceName)
+        public void OpenNamespace(string namespaceName)
         {
-            this.AddTypescript(String.Format("namespace {0} {1}\r\n\r\n", inNamespaceName, "{"));
+            this.AddTypescript(String.Format("namespace {0} {1}\r\n\r\n", namespaceName, "{"));
         }
 
         public void CloseNamespace()
@@ -80,7 +80,7 @@ namespace TypeAwesome
         private string resolvePropertyType(Type cSharpType)
         {
             var result = "";
-            // possible improvement, a lookup table may be better than a chain of if elses.
+            // possible improvement, a lookup table for the built in types may be better than a chain of if elses.
             if (cSharpType.IsPrimitive)
             {
                 if (cSharpType == typeof(bool))
@@ -120,10 +120,10 @@ namespace TypeAwesome
         /// <summary>
         /// Appends script as-is to the export, useful for setting variables.
         /// </summary>
-        /// <param name="inScript">The script to add Verbatim to the export</param>
-        public void AddTypescript(string inScript)
+        /// <param name="script">The script to add Verbatim to the export</param>
+        public void AddTypescript(string script)
         {
-            this.exportBuilder.Append(inScript);
+            this.exportBuilder.Append(script);
         }
         
         /// <summary>
@@ -208,17 +208,25 @@ namespace TypeAwesome
             return result;
         }
 
-        public void GenerateForOneParameterActionMethods(string inTemplate)
+        /// <summary>
+        ///  Generates code from a given template for all action methods that take exactly one parameter
+        /// </summary>
+        /// <param name="tsTemplate">the template to generate code from</param>
+        public void GenerateForOneParameterActionMethods(string tsTemplate)
         {
             this.actionMethods.Where(methodInfo => methodInfo.GetParameters().Count() == 1)
-                .Select(methodInfo => ReplaceTemplate(methodInfo, inTemplate)).ToList()
+                .Select(methodInfo => ReplaceTemplate(methodInfo, tsTemplate)).ToList()
                 .ForEach(generatedCode => exportBuilder.Append(generatedCode));
         }
 
-        public void GenerateForParameterlessActionMethods(string inTemplate)
+        /// <summary>
+        /// Generates code from a given template for all no paramater action methods.
+        /// </summary>
+        /// <param name="tsTemplate">the template to generate code from</param>
+        public void GenerateForParameterlessActionMethods(string tsTemplate)
         {
             this.actionMethods.Where(methodInfo => methodInfo.GetParameters().Count() == 0)
-                .Select(methodInfo => ReplaceTemplate(methodInfo, inTemplate)).ToList()
+                .Select(methodInfo => ReplaceTemplate(methodInfo, tsTemplate)).ToList()
                 .ForEach(generatedCode => exportBuilder.Append(generatedCode));
         }
 
@@ -226,11 +234,11 @@ namespace TypeAwesome
         /// Generates code from a given template for all action methods - if a template contains {PARAMETERTYPEKEY} or {PARAMETERNAMEKEY},
         /// these will be taken to be "void" and "parameter" respectively for those methods with no parameter
         /// </summary>
-        /// <param name="inTemplate">the template for </param>
-        public void GenerateForAllActionMethods(string inTemplate)
+        /// <param name="tsTemplate">the template to generate code from</param>
+        public void GenerateForAllActionMethods(string tsTemplate)
         {
             this.actionMethods
-                .Select(methodInfo => ReplaceTemplate(methodInfo, inTemplate)).ToList()
+                .Select(methodInfo => ReplaceTemplate(methodInfo, tsTemplate)).ToList()
                 .ForEach(generatedCode => exportBuilder.Append(generatedCode));
         }
 
