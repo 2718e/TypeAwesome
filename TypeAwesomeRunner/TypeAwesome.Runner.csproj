@@ -87,9 +87,9 @@
       <Project>{81fe7133-a1c5-40b2-af6b-bf1470b349e3}</Project>
       <Name>TypeAwesome</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Utils\Utils.csproj">
+    <ProjectReference Include="..\Utils\TypeAwesome.Utils.csproj">
       <Project>{e3e443a3-85f4-4ee1-ba6b-7da9098c3fdc}</Project>
-      <Name>Utils</Name>
+      <Name>TypeAwesome.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

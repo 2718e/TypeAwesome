@@ -1,10 +1,10 @@
 /// <reference path="serverexports.ts" />
 function TestExports() {
-    ExampleBackend.ExampleExampleParameterlessMethod(function (modelv1) {
+    ExampleBackend.ExampleParameterlessMethod().then(modelv1 => {
         console.log(modelv1);
-        ExampleBackend.ExampleExampleOneParameterMethod(modelv1, function (modelv2) {
-            console.log(modelv2);
-        }, console.log);
+        return ExampleBackend.ExampleOneParameterMethod(modelv1);
+    }, console.log).then(modelv2 => {
+        console.log(modelv2);
     }, console.log);
 }
 //# sourceMappingURL=testexports.js.map

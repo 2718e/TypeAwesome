@@ -10,13 +10,13 @@ namespace TypeAwesome.ExampleMethods
     public class ExampleController : Controller
     {
 
-        public TypedJsonNetResult<ExampleModel1> ExampleParameterlessMethod()
+        public TypedJsonNetResult<ExampleModel1> ParameterlessMethod()
         {
             var result = new ExampleModel1 { Desciption = "Bacon", Amount = 9001 };
             return new TypedJsonNetResult<ExampleModel1>(result);
         }
 
-        public TypedJsonNetResult<ExampleModel2> ExampleOneParameterMethod(ExampleModel1 inputModel)
+        public TypedJsonNetResult<ExampleModel2> OneParameterMethod(ExampleModel1 inputModel)
         {
             var model = new ExampleModel2 {
                 CustomerName = "A Person",

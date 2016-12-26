@@ -12,9 +12,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypeAwesome.ExampleFrontend
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypeAwesome.ExampleMethods", "TypeAwesome.ExampleMethods\TypeAwesome.ExampleMethods.csproj", "{C03A9C9D-2293-4645-AF4F-C1333D3F667E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypeAwesomeRunner", "TypeAwesomeRunner\TypeAwesomeRunner.csproj", "{7DAE0F17-918D-4489-8907-D101C27E4212}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypeAwesome.Runner", "TypeAwesomeRunner\TypeAwesome.Runner.csproj", "{7DAE0F17-918D-4489-8907-D101C27E4212}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{E3E443A3-85F4-4EE1-BA6B-7DA9098C3FDC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypeAwesome.Utils", "Utils\TypeAwesome.Utils.csproj", "{E3E443A3-85F4-4EE1-BA6B-7DA9098C3FDC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F574CBBD-15E0-40BB-BB45-819AC671C854}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

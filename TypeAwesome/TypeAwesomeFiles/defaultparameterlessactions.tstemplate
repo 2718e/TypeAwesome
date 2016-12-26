@@ -1,4 +1,4 @@
-﻿export function CONTROLLERACTION(onSuccess: (model: RETURNTYPE) => void, onError: (xhr: JQueryXHR) => void) {
-    CallParameterlessMethod(CONTROLLERACTIONMethodInfo, onSuccess, onError);
+﻿export function CONTROLLERACTION() {
+    return CallParameterlessMethod(CONTROLLERACTIONMethodInfo);
 }
 
