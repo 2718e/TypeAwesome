@@ -201,9 +201,9 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TypeAwesome.ExampleMethods\TypeAwesome.ExampleMethods.csproj">
+    <ProjectReference Include="..\TypeAwesome.ExampleMethods\TypeAwesome.TestAssembly.csproj">
       <Project>{c03a9c9d-2293-4645-af4f-c1333d3f667e}</Project>
-      <Name>TypeAwesome.ExampleMethods</Name>
+      <Name>TypeAwesome.TestAssembly</Name>
     </ProjectReference>
     <ProjectReference Include="..\TypeAwesome\TypeAwesome.csproj">
       <Project>{81fe7133-a1c5-40b2-af6b-bf1470b349e3}</Project>

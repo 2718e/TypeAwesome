@@ -27,30 +27,45 @@ export function CallParameterlessMethod<TReturn>(methodInfo: IMethodInfo<void, T
         }).then(resolve, reject);
     });
     return result
-}export interface IExampleModel1 {
+}
+
+export interface ISimpleModel {
+  Name : string;
   Amount : number;
-  Desciption : string;
 }
 
-export interface IExampleModel2 {
-  Order : IExampleModel1[];
-  CustomerName : string;
+export interface INestedArrayModel {
+  Values : number[][][];
 }
 
-var ExampleParameterlessMethodMethodInfo: IMethodInfo<void, IExampleModel1> = {
-    url: "/Example/ParameterlessMethod"
+export interface ITestModel {
+  NestedArray : INestedArrayModel;
+  Model : ISimpleModel;
+  Pets : string[];
+  Food : string;
+  LargeNumber : number;
+  HowMany : number;
+  Buoyancy : number;
+  Measurement : number;
+  SmallNumber : number;
+  Letter : string;
+  ALotOfStuff : number;
 }
 
-var ExampleOneParameterMethodMethodInfo: IMethodInfo<IExampleModel1, IExampleModel2> = {
-    url: "/Example/OneParameterMethod"
+var TestParameterlessMethodMethodInfo: IMethodInfo<void, ISimpleModel> = {
+    url: "/Test/ParameterlessMethod"
 }
 
-export function ExampleOneParameterMethod(inputModel: IExampleModel1) {
-    return CallMethod(ExampleOneParameterMethodMethodInfo, inputModel);
+var TestOneParameterMethodMethodInfo: IMethodInfo<ISimpleModel, ITestModel> = {
+    url: "/Test/OneParameterMethod"
 }
 
-export function ExampleParameterlessMethod() {
-    return CallParameterlessMethod(ExampleParameterlessMethodMethodInfo);
+export function TestOneParameterMethod(inputModel: ISimpleModel) {
+    return CallMethod(TestOneParameterMethodMethodInfo, inputModel);
+}
+
+export function TestParameterlessMethod() {
+    return CallParameterlessMethod(TestParameterlessMethodMethodInfo);
 }
 
 }

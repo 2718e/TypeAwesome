@@ -24,19 +24,19 @@ var ExampleBackend;
         return result;
     }
     ExampleBackend.CallParameterlessMethod = CallParameterlessMethod;
-    var ExampleParameterlessMethodMethodInfo = {
-        url: "/Example/ParameterlessMethod"
+    var TestParameterlessMethodMethodInfo = {
+        url: "/Test/ParameterlessMethod"
     };
-    var ExampleOneParameterMethodMethodInfo = {
-        url: "/Example/OneParameterMethod"
+    var TestOneParameterMethodMethodInfo = {
+        url: "/Test/OneParameterMethod"
     };
-    function ExampleOneParameterMethod(inputModel) {
-        return CallMethod(ExampleOneParameterMethodMethodInfo, inputModel);
+    function TestOneParameterMethod(inputModel) {
+        return CallMethod(TestOneParameterMethodMethodInfo, inputModel);
     }
-    ExampleBackend.ExampleOneParameterMethod = ExampleOneParameterMethod;
-    function ExampleParameterlessMethod() {
-        return CallParameterlessMethod(ExampleParameterlessMethodMethodInfo);
+    ExampleBackend.TestOneParameterMethod = TestOneParameterMethod;
+    function TestParameterlessMethod() {
+        return CallParameterlessMethod(TestParameterlessMethodMethodInfo);
     }
-    ExampleBackend.ExampleParameterlessMethod = ExampleParameterlessMethod;
+    ExampleBackend.TestParameterlessMethod = TestParameterlessMethod;
 })(ExampleBackend || (ExampleBackend = {}));
 //# sourceMappingURL=serverexports.js.map

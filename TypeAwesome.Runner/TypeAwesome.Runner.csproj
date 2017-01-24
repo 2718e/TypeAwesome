@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C03A9C9D-2293-4645-AF4F-C1333D3F667E}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{7DAE0F17-918D-4489-8907-D101C27E4212}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TypeAwesome.ExampleMethods</RootNamespace>
-    <AssemblyName>TypeAwesome.ExampleMethods</AssemblyName>
+    <RootNamespace>TypeAwesomeRunner</RootNamespace>
+    <AssemblyName>TypeAwesomeRunner</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,10 +35,6 @@
   <ItemGroup>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -72,20 +71,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExampleController.cs" />
-    <Compile Include="ExampleModel.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TypeAwesome.ExampleMethods\TypeAwesome.TestAssembly.csproj">
+      <Project>{c03a9c9d-2293-4645-af4f-c1333d3f667e}</Project>
+      <Name>TypeAwesome.TestAssembly</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TypeAwesome\TypeAwesome.csproj">
       <Project>{81fe7133-a1c5-40b2-af6b-bf1470b349e3}</Project>
       <Name>TypeAwesome</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utils\TypeAwesome.Utils.csproj">
+      <Project>{e3e443a3-85f4-4ee1-ba6b-7da9098c3fdc}</Project>
+      <Name>TypeAwesome.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>$(TargetPath) --out-path $(SolutionDir)TypeAwesome.ExampleFrontend\FrontendSrc\serverexports.ts --out-dir-to-project-root-path ..</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

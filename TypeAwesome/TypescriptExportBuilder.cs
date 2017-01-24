@@ -72,6 +72,22 @@ namespace TypeAwesome
         }
 
         /// <summary>
+        /// how the primitive types will be converted
+        /// </summary>
+        private static Dictionary<Type, string> PrimitiveTypeMappings = new Dictionary<Type, string>
+        {
+            { typeof(bool), "boolean" },
+            { typeof(char), "string" },
+            { typeof(string), "string" },
+            { typeof(float), "number" },
+            { typeof(double), "number" },
+            { typeof(decimal), "number" },
+            { typeof(byte), "number" },
+            { typeof(int), "number" },
+            { typeof(long), "number" },
+        };
+
+        /// <summary>
         /// Converts A C# type, as found in the property of a model class to a typescript type
         /// </summary>
         /// <param name="cSharpType">the type of</param>
@@ -80,26 +96,9 @@ namespace TypeAwesome
         private string resolvePropertyType(Type cSharpType)
         {
             var result = "";
-            // possible improvement, a lookup table for the built in types may be better than a chain of if elses.
-            if (cSharpType.IsPrimitive)
+            if (PrimitiveTypeMappings.ContainsKey(cSharpType))
             {
-                if (cSharpType == typeof(bool))
-                {
-                    result = "boolean";
-                } else if (cSharpType == typeof(char))
-                {
-                    result = "string";
-                } else
-                {
-                    result = "number";
-                }
-            } else if (cSharpType == typeof(string))
-            {
-                result = "string";
-            }
-            else if (cSharpType == typeof(decimal))
-            {
-                result = "number";
+                result = PrimitiveTypeMappings[cSharpType];
             } else if (typeof(ITypedJModel).IsAssignableFrom(cSharpType))
             {
                 result = $"I{cSharpType.Name}";
