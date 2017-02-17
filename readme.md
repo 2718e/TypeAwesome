@@ -5,6 +5,11 @@ TypeAwesome is a small C# program which uses the C# reflection feature to export
 
 The repository contains a sample solution based on slight modifications to one of the default MVC templates built into visual studio.
 
+## Warning
+
+This project is sort of deprecated in favor of TypeAwesome-WebApi as the Web Api seems much more suited to scenarios where you are writing controllers for the purpose of responding to ajax calls. 
+Also, using this does require some effort to set up - and it is likely a *lot* easier to just use Web Api (and TypeAwesome-WebApi) than do that.
+
 ## License
 
 Licensed under [MIT License](https://opensource.org/licenses/MIT).

@@ -79,7 +79,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TypeAwesome.ExampleMethods\TypeAwesome.TestAssembly.csproj">
+    <ProjectReference Include="..\TypeAwesome.TestAssembly\TypeAwesome.TestAssembly.csproj">
       <Project>{c03a9c9d-2293-4645-af4f-c1333d3f667e}</Project>
       <Name>TypeAwesome.TestAssembly</Name>
     </ProjectReference>
